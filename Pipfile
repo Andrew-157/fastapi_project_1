@@ -10,6 +10,10 @@ uvicorn = {extras = ["standard"], version = "*"}
 alembic = "*"
 python-decouple = "*"
 psycopg2 = "*"
+python-multipart = "*"
+python-jose = {extras = ["cryptography"], version = "*"}
+passlib = {extras = ["bcrypt"], version = "*"}
+email-validator = "*"
 
 [dev-packages]
 autopep8 = "*"
