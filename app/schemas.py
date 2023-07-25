@@ -22,3 +22,7 @@ class UserCreate(UserBase):
 
 class UserRead(UserBase):
     id: int
+
+
+class UserUpdate(UserBase):
+    pass
