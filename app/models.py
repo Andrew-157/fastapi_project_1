@@ -21,6 +21,7 @@ class RecommendationTagLink(SQLModel, table=True):
 
 class Recommendation(RecommendationBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
+    user_id: int = Field(foreign_key="user.id")
 
     user: User = Relationship(back_populates="recommendations")
     tags: list["Tag"] = Relationship(back_populates="recommendations",

@@ -1,8 +1,8 @@
-"""m2m between recommendation and tag
+"""tag table and m2m with recommendation table
 
-Revision ID: 2376b5103669
-Revises: 6ab2266e1789
-Create Date: 2023-08-01 12:42:58.988847
+Revision ID: f4f186953d09
+Revises: e0f47b699b38
+Create Date: 2023-08-01 14:20:03.789359
 
 """
 from alembic import op
@@ -11,8 +11,8 @@ import sqlmodel
 
 
 # revision identifiers, used by Alembic.
-revision = '2376b5103669'
-down_revision = '6ab2266e1789'
+revision = 'f4f186953d09'
+down_revision = 'e0f47b699b38'
 branch_labels = None
 depends_on = None
 

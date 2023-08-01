@@ -1,8 +1,8 @@
-"""Create Recommendation table
+"""recommendation table and relationship with user
 
-Revision ID: 5a6e5e8d8abe
-Revises: 50e08dd093c7
-Create Date: 2023-08-01 11:59:29.254819
+Revision ID: e0f47b699b38
+Revises: 5d3941fe63ba
+Create Date: 2023-08-01 14:19:09.277261
 
 """
 from alembic import op
@@ -11,8 +11,8 @@ import sqlmodel
 
 
 # revision identifiers, used by Alembic.
-revision = '5a6e5e8d8abe'
-down_revision = '50e08dd093c7'
+revision = 'e0f47b699b38'
+down_revision = '5d3941fe63ba'
 branch_labels = None
 depends_on = None
 
@@ -24,8 +24,8 @@ def upgrade() -> None:
     sa.Column('title', sqlmodel.sql.sqltypes.AutoString(length=255), nullable=False),
     sa.Column('short_description', sqlmodel.sql.sqltypes.AutoString(), nullable=False),
     sa.Column('opinion', sqlmodel.sql.sqltypes.AutoString(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('type_of_fiction')

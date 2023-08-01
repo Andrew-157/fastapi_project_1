@@ -4,13 +4,12 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, Body, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
-from sqlmodel import Session, SQLModel, Field
-from pydantic import validator
+from sqlmodel import Session, select
 
 from ..auth import create_access_token, get_current_user, authenticate_user, Token,\
     ACCESS_TOKEN_EXPIRES_HOURS, get_password_hash
 from ..database import get_session
-from ..schemas import UserCreate, UserRead, UserUpdate, UserBase
+from ..schemas import UserCreate, UserRead, UserUpdate
 from ..models import User
 from ..crud import get_user_with_username, get_user_with_email
 

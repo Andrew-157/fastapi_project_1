@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 from sqlmodel import SQLModel, Field
 from pydantic import validator
 
@@ -23,20 +24,34 @@ class RecommendationBase(SQLModel):
     title: str = Field(max_length=255)
     short_description: str
     opinion: str
-
-    user_id: int = Field(foreign_key="user.id")
+    published: datetime = Field(nullable=True, default=datetime.utcnow())
+    updated: datetime | None = Field(default=None)
 
 
 class TagBase(SQLModel):
     name: str = Field(max_length=255)
 
 
-class UserCreate(UserBase):
-    password: str = Field(min_length=8)
+class RecommendationCreate(RecommendationBase):
+    tags: list[str] = Field(min_items=1)
+
+
+class TagRead(TagBase):
+    id: int
 
 
 class UserRead(UserBase):
     id: int
+
+
+class RecommendationRead(RecommendationBase):
+    id: int
+    user_id: int
+    tags: list[TagRead] = []
+
+
+class UserCreate(UserBase):
+    password: str = Field(min_length=8)
 
 
 class UserUpdate(SQLModel):
