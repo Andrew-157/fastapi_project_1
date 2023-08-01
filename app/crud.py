@@ -1,5 +1,5 @@
 from sqlmodel import Session, select
-from .models import User, Tag, Recommendation
+from .models import User, Tag, Recommendation, RecommendationTagLink
 
 
 def get_user_with_username(session: Session, username: str):
@@ -28,5 +28,5 @@ def save_tags(session: Session, tags: list):
 
 
 def get_recommendation_by_id(session: Session, recommendation_id: int):
-    return session.exec(select(Recommendation).
+    return session.exec(select(Recommendation).join(RecommendationTagLink).join(Tag).
                         where(Recommendation.id == recommendation_id)).first()

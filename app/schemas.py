@@ -20,7 +20,7 @@ class UserBase(SQLModel):
 
 class RecommendationBase(SQLModel):
     type_of_fiction: str = Field(max_length=255,
-                                 min_length=4, unique=True)
+                                 min_length=4)
     title: str = Field(max_length=255)
     short_description: str
     opinion: str

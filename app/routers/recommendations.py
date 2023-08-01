@@ -15,7 +15,9 @@ router = APIRouter(
 )
 
 
-@router.post('/recommend', response_model=RecommendationRead)
+@router.post('/recommend',
+             response_model=RecommendationRead,
+             status_code=status.HTTP_201_CREATED)
 async def post_recommendation(data: Annotated[RecommendationCreate, Body()],
                               current_user: Annotated[User, Depends(get_current_user)],
                               session: Annotated[Session, Depends(get_session)]):
@@ -35,8 +37,7 @@ async def post_recommendation(data: Annotated[RecommendationCreate, Body()],
 
 
 @router.get('/recommendations/{recommendation_id}',
-            response_model=RecommendationRead,
-            status_code=status.HTTP_201_CREATED)
+            response_model=RecommendationRead)
 async def get_recommendation(recommendation_id: Annotated[int, Path()],
                              session: Annotated[Session, Depends(get_session)]):
     recommendation = get_recommendation_by_id(session=session,
