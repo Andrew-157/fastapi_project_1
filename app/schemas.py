@@ -14,3 +14,15 @@ class UserBase(SQLModel):
         if not re.fullmatch(regex, value):
             raise ValueError("Not valid email address")
         return value
+
+
+class UserCreate(UserBase):
+    password: str
+
+
+class UserRead(UserBase):
+    id: int
+
+
+class UserUpdate(UserBase):
+    pass
