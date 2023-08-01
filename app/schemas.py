@@ -24,8 +24,6 @@ class RecommendationBase(SQLModel):
     title: str = Field(max_length=255)
     short_description: str
     opinion: str
-    published: datetime = Field(nullable=True, default=datetime.utcnow())
-    updated: datetime | None = Field(default=None)
 
 
 class TagBase(SQLModel):
@@ -47,6 +45,8 @@ class UserRead(UserBase):
 class RecommendationRead(RecommendationBase):
     id: int
     user_id: int
+    published: datetime
+    updated: datetime | None
     tags: list[TagRead] = []
 
 

@@ -1,3 +1,4 @@
+from datetime import datetime
 from sqlmodel import SQLModel, Field, Relationship
 from .schemas import UserBase, RecommendationBase, TagBase
 
@@ -21,6 +22,8 @@ class RecommendationTagLink(SQLModel, table=True):
 
 class Recommendation(RecommendationBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
+    published: datetime = Field(nullable=True, default=datetime.utcnow())
+    updated: datetime | None = Field(default=None)
     user_id: int = Field(foreign_key="user.id")
 
     user: User = Relationship(back_populates="recommendations")
