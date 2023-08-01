@@ -29,7 +29,7 @@ class UserUpdate(SQLModel):
     username: str | None = Field(default=None,
                                  max_length=255, min_length=5)
     email: str | None = Field(default=None,
-                              max_length=255, default=None)
+                              max_length=255)
 
     @validator("email")
     def email_valid(cls, value):

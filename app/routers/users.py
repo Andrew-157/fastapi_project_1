@@ -108,6 +108,6 @@ async def update_user(
             current_user.email = new_email
 
     session.add(current_user)
-    session.commit(current_user)
+    session.commit()
     session.refresh(current_user)
     return current_user
