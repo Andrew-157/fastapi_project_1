@@ -4,8 +4,8 @@ from pydantic import validator
 
 
 class UserBase(SQLModel):
-    name: str = Field(max_length=255, min_length=5,
-                      unique=True, index=True)
+    username: str = Field(max_length=255, min_length=5,
+                          unique=True, index=True)
     email: str = Field(unique=True, max_length=255,
                        index=True)
 
